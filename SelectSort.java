@@ -1,0 +1,96 @@
+import java.util.Arrays;
+
+public class SelectSort {
+    public static void main(String[] args) {
+        int []arr1  = {101 ,   119 ,34,1};
+        selectSort(arr1);
+    }
+
+
+    // 选择排序
+    public static void selectSort (int [] arr){
+     // 在推导的过程中， 我们发现了规律， 因此， 可以使用双重for解决
+        for (int i = 0; i < arr.length - 1 ; i++) {
+            int minIndex = i ;
+            int min = arr[i]; // 从0 开始， 假定arr[0] 就是最小值
+            for (int j = i + 1 ; j < arr.length; j++) {  // 从1开始依次和arr[0] 做比较
+                if (min > arr[j]){  // 说明arr[0]还不是最小值
+                    min = arr[j];       // 重置min
+                    minIndex = j;      // 重置minIndex
+                }
+            }
+
+            // 将最小值进行交换
+            // 做一个优化
+            if (minIndex != i) {
+                arr[minIndex] = arr[i];  //把arr[0] 和索引出来的最小值进行交换
+                arr[i] = min; // min已经是现在的最小值
+            }
+            System.out.println("第"+(i+ 1)+"轮排序过后");
+            System.out.println(Arrays.toString(arr));
+
+        }
+
+
+        // 逐步推导，  讲解选择排序
+        // 第1 轮
+       // 原始数组 : 101 , 34 ,119 , 1
+      // 第一轮排序  :  1 , 34 , 119 , 101
+      //  从简单 到 复杂 ，  把一个复杂的算法， 拆分成简单的问题 - 逐步解决
+
+        int minIndex = 0 ;
+        int min = arr[0]; // 从0 开始， 假定arr[0] 就是最小值
+        for (int i = 0 + 1 ; i < arr.length; i++) {  // 从1开始依次和arr[0] 做比较
+             if (min > arr[i]){  // 说明arr[0]还不是最小值
+                min = arr[i];       // 重置min
+                minIndex = i;      // 重置minIndex
+             }
+        }
+
+      // 将最小值进行交换
+        arr[minIndex] = arr[0];  //把arr[0] 和索引出来的最小值进行交换
+        arr[0] = min; // min已经是现在的最小值
+
+        System.out.println("第1轮排序过后");
+        System.out.println(Arrays.toString(arr));
+
+         // 第2轮
+        minIndex = 1;
+        min = arr[1];
+        for (int i = 1 + 1 ; i < arr.length; i++) {  // 从1开始依次和arr[0] 做比较
+            if (min > arr[i]){  // 说明arr[0]还不是最小值
+                min = arr[i];       // 重置min
+                minIndex = i;      // 重置minIndex
+            }
+        }
+
+        // 将最小值进行交换
+
+        arr[minIndex] = arr[1];  //把arr[0] 和索引出来的最小值进行交换
+        arr[1] = min; // min已经是现在的最小值
+
+        System.out.println("第2轮排序过后");
+        System.out.println(Arrays.toString(arr));
+
+
+        min = arr[2] ;
+        minIndex = 2;
+        for (int i = 2 + 1 ; i < arr.length; i++) {  // 从1开始依次和arr[0] 做比较
+            if (min > arr[i]){  // 说明arr[0]还不是最小值
+                min = arr[i];       // 重置min
+                minIndex = i;      // 重置minIndex
+            }
+        }
+
+        // 将最小值进行交换
+
+        arr[minIndex] = arr[2];  //把arr[0] 和索引出来的最小值进行交换
+        arr[2] = min; // min已经是现在的最小值
+
+        System.out.println("第3轮排序过后");
+        System.out.println(Arrays.toString(arr));
+
+
+    }
+
+}
