@@ -73,5 +73,40 @@ public class BubbleSort {
             System.out.println(Arrays.toString(arr));
 
         }
+    
+    
+//public class BubbleSort优化 {
+//    public static void main(String[] args) {
+//      int [] arr = { 3 , - 1 , 9 , 10 ,20};
+//      int temp = 0 ;
+//      boolean flag = false;
+//        public static void bubbleSort(int[] array){
+//            for (int j = 0; j < array.length - 1; j++) {
+//                for (int i = 0; i < array.length - 1 - j; i++) {
+//                    // 如果前面的数比后面的数大， 就交换
+//                    if (array[i] > array[i + 1]) {
+//                        flag = true;
+//                        temp = array[i];
+//                        array[i] = array[i + 1];
+//                        array[i + 1] = temp;
+//                    }
+//                }
+//                // 一个一个往后比， 绝对能比出来一个最大的
+//             //   System.out.println("第" + (j + 1) + "次排序后的数组");
+//               // System.out.println(Arrays.toString(arr));
+//
+//                if (!flag){
+//                    break;
+//                }else{
+//                  flag = false;  //!!!重置flag 方便下一次判断
+//                }
+//            }
+//        }
+//    }
+//}
+
+    
+    
+    
     }
 }
