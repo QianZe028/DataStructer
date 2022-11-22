@@ -20,10 +20,43 @@ public class BinaryTreeDemo {
        // 测试前序遍历
         System.out.println("前序遍历"); // 1234
         binaryTree.preOrder01();
-        System.out.println("================");
+        System.out.println("中序遍历");
         binaryTree.infixOrder01();
-        System.out.println("================");
+        System.out.println("后序遍历");
         binaryTree.postOrder01();
+
+
+
+        // 前序遍历
+        // 前序遍历的次数：4
+
+        HeroNode01 resNode = binaryTree.preOrderSearch(5);
+        if (resNode != null){
+            System.out.print("找到了%d");
+        }else {
+            System.out.printf("没有找到%d" ,resNode.getNo());
+        }
+
+        //中序遍历查找
+        //中序遍历3次
+        System.out.println("中序遍历方式");
+        HeroNode01 resNode01 = binaryTree.infixOrderSearch(5);
+        if (resNode01 != null){
+            System.out.printf("找到了编号为%d 名字为%s",resNode01.getNo(),resNode01.getName());
+        }else {
+            System.out.printf("没有找到编号%d的英雄" , 5);
+        }
+
+
+        //后序遍历查找
+        // 后序遍历2次
+        System.out.println("后序遍历方式");
+        HeroNode01 resNode02 = binaryTree.postOrderSearch(5);
+        if (resNode02 != null){
+            System.out.printf("找到了编号为%d 名字为%s的英雄",resNode02.getNo(),resNode02.getName());
+        }else {
+            System.out.printf("没有找到%d的英雄",resNode02.getNo());
+        }
     }
 }
 
@@ -64,6 +97,33 @@ class  BinaryTree {
         }
     }
 
+    // 前序遍历
+    public  HeroNode01 preOrderSearch(int no){
+        if (root != null){
+            return  root.preOrderSearch(no);
+        }else {
+            return  null;
+        }
+    }
+
+    // 中序遍历
+    public HeroNode01 infixOrderSearch(int no ){
+        if (root != null){
+            return  root.infixOrderSearch(no);
+        }else {
+            return  null;
+        }
+    }
+
+
+    // 后序遍历
+    public HeroNode01 postOrderSearch (int no){
+        if (root != null){
+            return  this.root.postOrderSearch(no);
+        }else {
+            return  null;
+        }
+    }
 }
 
 
@@ -156,5 +216,100 @@ class HeroNode01{
            // 输出父节点
          System.out.println(this);
     }
+
+       // 前序遍历查找
+    /*
+    *   no 查找no
+    *   如果找到就返回该Node ， 找不到就返回null
+    * */
+
+    public HeroNode01 preOrderSearch(int no){
+        System.out.println("进入前序遍历");
+        // 比较当前的节点是不是.
+        if (this.no == no){
+            return  this;
+        }
+       // 1. 判断当前节点的左子节点是否为空， 如果不为空， 则递归前序查找
+        HeroNode01 resNode = null;
+
+        if (this.left != null){
+            resNode = this.left.preOrderSearch(no);
+        }
+
+        if (resNode != null){ // res不为空则说明我们已经找到了
+            return  resNode;
+        }
+
+       // 1.左递归前序查找， 找到节点，则返回，否则将继续判断
+        //2. 当前的节点的右子节点是否为空， 如果不为空， 则向右递归前序查找
+
+        if (this.right != null){
+            resNode = this.right.preOrderSearch(no);
+        }
+       return  resNode;
+
+    }
+
+
+    // 中序遍历查找
+
+    public HeroNode01 infixOrderSearch(int no){
+        // 判断当前节点的左子节点是否为空， 如果不为空， 则递归中序查找
+        HeroNode01 resNode = null;
+        if (this.left != null){
+            resNode = this.left.infixOrderSearch(no);
+        }
+
+      if (resNode != null){
+          return  resNode;
+      }
+
+       // 如果找到， 则返回，没有找到 ，就和当前节点比较，如果是，则返回当前的节点
+
+       if (this.no == no){
+           return this;
+       }
+
+       // 否则继续进行右递归的中序查找
+        if (this.right != null){
+            resNode  = this.right.infixOrderSearch(no);
+        }
+     return  resNode;
+    }
+
+
+    //后序遍历查找
+    public HeroNode01 postOrderSearch(int no){
+
+        // 判读当前节点的左子节点是否为空， 如果不为空，则递归后序查找
+           HeroNode01 resNode = null;
+        if (this.left != null){
+            resNode = this.left.postOrderSearch(no);
+        }
+
+       if (resNode != null){ // 说明左子树找到
+           return  resNode;
+       }
+
+       // 如果左子树没有找到， 则向右子树递归进行后续遍历查找
+
+        if (this.right != null){
+            resNode = this.right.postOrderSearch(no);
+        }
+
+        if (resNode != null){
+            return  resNode;
+        }
+        System.out.println("进入后序查找");
+
+        // 如果左右子树都没有找到， 则比较当前节点是不是
+
+         if (this.no == no){
+             return  this;
+         }
+
+       return  resNode;
+    }
+
 }
 
