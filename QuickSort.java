@@ -6,6 +6,25 @@ public class QuickSort {
         int []arr = { -9 , 78 , 0 , 23 , -567 , 70};
         quickSort(arr, 0 , arr.length - 1);
         System.out.println(Arrays.toString(arr));
+        
+        //
+//        int []arr1 = new int [80000];
+//        for (int i = 0; i < 80000; i++) {
+//            arr1[i] = (int) (Math.random()*800000); // 随机生成0-800000之间的数
+//        }
+//
+//        // 对选择排序进行测速
+//
+//        Date date = new Date();
+//        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+//        String datestr = simpleDateFormat.format(date);
+//        System.out.println("排序前的时间 =" + datestr);
+//
+//        quickSort(arr1 , 0 , arr.length - 1);
+//        Date date1 = new Date();
+//        String datestr1 = simpleDateFormat.format(date1);
+//        System.out.println("排序后的时间 =" + datestr1);
+        
     }
 
    public static void quickSort(int [] arr , int left , int right){
