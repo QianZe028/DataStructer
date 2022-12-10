@@ -81,7 +81,7 @@ class EmplinkedList{
      public void show(){
         if (head == null){
             System.out.println("当前链表为空");
-            return;;
+            return;
         }
          System.out.println("链表的信息为");
         Emp curEmp = head;
